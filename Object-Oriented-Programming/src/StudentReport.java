@@ -18,5 +18,4 @@ public class StudentReport {
             System.out.println(e);
         }
     }
-
 }
