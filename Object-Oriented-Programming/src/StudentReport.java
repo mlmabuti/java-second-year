@@ -11,11 +11,13 @@ public class StudentReport {
         // String pathParentInfo = "studentData/ParentInfo.csv";
         String line;
 
+
+        // set object data
         try {
             BufferedReader br = new BufferedReader(new FileReader(pathStudInfo));
             while ((line = br.readLine()) != null){
                 String[] values = line.split(",");
-                System.out.println(values[0]);
+
             }
         } catch (Exception e){
             System.out.println(e);
