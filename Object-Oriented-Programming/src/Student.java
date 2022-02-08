@@ -16,4 +16,20 @@ public class Student {
     public void setDegreeCode(String degreeCode) {
         this.degreeCode = degreeCode;
     }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public String getLastName(){
+        return this.lastName;
+    }
+
+    public String getFirstName(){
+        return this.firstName;
+    }
+
+    public String getDegreeCode() {
+        return degreeCode;
+    }
 }
