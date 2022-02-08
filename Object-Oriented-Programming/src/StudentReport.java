@@ -11,7 +11,8 @@ public class StudentReport {
         try {
             BufferedReader br = new BufferedReader(new FileReader(pathStudInfo));
             while ((line = br.readLine()) != null){
-                System.out.println(line);
+                String[] values = line.split(",");
+                System.out.println(values[0]);
             }
         } catch (Exception e){
             System.out.println(e);
