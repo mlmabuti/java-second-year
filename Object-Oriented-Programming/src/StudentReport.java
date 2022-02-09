@@ -42,8 +42,8 @@ public class StudentReport {
                     students[ctr].setFirstName(values[2]);
                     students[ctr].setDegreeCode(values[3]);
                     students[ctr].setAddresses(Objects.requireNonNull(
-                            Address.listAddresses(Integer.parseInt(values[0])))[0],
-                            Objects.requireNonNull(Address.listAddresses(Integer.parseInt(values[0])))[1]
+                            utils.Utils.listAddresses(Integer.parseInt(values[0])))[0],
+                            Objects.requireNonNull(utils.Utils.listAddresses(Integer.parseInt(values[0])))[1]
                     ); // require non null 2d arr
                     ctr++;
                 }
