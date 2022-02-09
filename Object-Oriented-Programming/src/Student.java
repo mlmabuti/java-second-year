@@ -14,9 +14,13 @@ public class Student {
         this.firstName = firstName;
     }
 
-    void setDegreeCode(String degreeCode) {
-        this.degreeCode = degreeCode;
-    }
+    void setDegreeCode(String degreeCode) { this.degreeCode = degreeCode; }
+
+    void setMother(String mother) {this.mother = mother;}
+
+    void setFather(String father) {this.father = father;}
+
+    void setGuardian(String guardian) {this.guardian = guardian;}
 
     void setAddresses(String[] addresses, String[] cityOrProv){
         this.addresses = new String[addresses.length];

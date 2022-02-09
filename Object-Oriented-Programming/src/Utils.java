@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 
+// UTILITY FUNCTIONS
 public class Utils {
     public static int studentCount = 0;
     public static final String pathStudInfo = "studentData/StudInfo.csv";
@@ -22,11 +23,11 @@ public class Utils {
     public static void countStudents(){
         // for each line in the csv
         int ctr = 0;
-        BufferedReader brCount = createBuffer(pathStudInfo);
+        BufferedReader br = createBuffer(pathStudInfo);
         // count students by unique id
         try {
-            if (brCount != null) { // to avoid null pointer
-                while (brCount.readLine() != null){
+            if (br != null) { // to avoid null pointer
+                while (br.readLine() != null){
                     ctr += 1;
                 }
             }
@@ -44,10 +45,10 @@ public class Utils {
         // set student's data
         try {
             String line;
-            BufferedReader brStudent = Utils.createBuffer(Utils.pathStudInfo);
+            BufferedReader br = Utils.createBuffer(Utils.pathStudInfo);
             int ctr = 0;
-            if (brStudent != null) { // prevent null pointer
-                while ((line = brStudent.readLine()) != null){
+            if (br != null) { // prevent null pointer
+                while ((line = br.readLine()) != null){
                     String[] values = line.split(","); // split by comma
                     students[ctr] = new Student(); // fill array with student objects
                     // set student data
@@ -75,11 +76,12 @@ public class Utils {
     public static String[][] listAddresses(int id){
         String line = ""; // for each line in the csv
         int ctr = 0;
+
         try {
-            BufferedReader brCount = Utils.createBuffer(pathAddressInfo);
-            if (brCount != null) { // to avoid null pointer
+            BufferedReader br = Utils.createBuffer(pathAddressInfo);
+            if (br != null) { // to avoid null pointer
                 // to count addresses by duplicate ids
-                while ((line = brCount.readLine()) != null){
+                while ((line = br.readLine()) != null){
                     String[] values = line.split(","); // split by comma
                     if (id == Integer.parseInt(values[0])){ // count by duplicated ids
                         ctr++;
@@ -89,10 +91,10 @@ public class Utils {
                 String[] addresses = new String[ctr];
                 String[] cityOrProv = new String[ctr];
                 ctr = 0;
-                brCount = Utils.createBuffer(pathAddressInfo);
+                br = Utils.createBuffer(pathAddressInfo);
 
-                if (brCount != null) {
-                    while ((line = brCount.readLine()) != null){
+                if (br != null) {
+                    while ((line = br.readLine()) != null){
                         String[] values = line.split(","); // split by comma
                         if (id == Integer.parseInt(values[0])){
                             addresses[ctr] = values[2];
@@ -102,6 +104,46 @@ public class Utils {
                     }
                 }
                 return new String[][]{addresses, cityOrProv};
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String[] listParentGuardian(int id){
+        String line="", mother ="", father="", guardian="";
+        int ctr = 0;
+
+        try {
+            BufferedReader br = Utils.createBuffer(pathParentInfo);
+            if (br != null) { // to avoid null pointer
+                // to count parents or guardian by duplicate ids
+                while ((line = br.readLine()) != null){
+                    String[] values = line.split(","); // split by comma
+                    if (id == Integer.parseInt(values[0])){ // count by duplicated ids
+                        ctr++;
+                    }
+                }
+                // to append addresses into addresses array
+                ctr = 0;
+                br = Utils.createBuffer(pathParentInfo);
+
+                if (br != null) {
+                    while ((line = br.readLine()) != null){
+                        String[] values = line.split(","); // split by comma
+                        if (id == Integer.parseInt(values[0])){
+                            switch (values[1]){
+                                case "M" : mother = values[2]; break;
+                                case "F" : father = values[2]; break;
+                                case "G" : guardian = values[2]; break;
+                            }
+
+                            ctr++;
+                        }
+                    }
+                }
+                return new String[]{mother, father, guardian};
             }
         } catch (IOException e) {
             e.printStackTrace();
