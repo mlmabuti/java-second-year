@@ -5,7 +5,7 @@ public class Degree {
         this.degreeCode = degreeCode;
     }
 
-    public String getDegreeName(){
+    String getDegreeName(){
         switch(this.degreeCode){
             case "BSCS" : return "BS Computer Science";
             case "BSECE" : return "BS Electronics Engineering";
