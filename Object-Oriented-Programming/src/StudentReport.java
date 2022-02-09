@@ -1,16 +1,33 @@
 import utils.Utils;
 
 import java.io.BufferedReader;
-import java.util.Arrays;
+import java.util.Objects;
 
 // NOTE: use getters and setters, student report must have an array of objects,
 // loop through each object and use getters/setters
+
+// confusions: studfile? rowstudentspecific?
+
 public class StudentReport {
 
-    public static void main(String[] args){
-        utils.Utils.countStudents();
+    public static void printReport(Student[] students){
+        for(Student s : students){
+            System.out.println("Student id is " + s.getId() +
+                            " Student name is " + s.getLastName().toUpperCase()+", "+s.getFirstName()
+                    //"Studying " + __convertToCourse__ s.getDegreeCode() +
+                    //__city__ + "address is" + Arrays.toString(s.getAddresses())); +
+                    //__prov__ + "address is" + __address__ +
+                    //"Mother's name is " + __mother__ +
+                    //"Father's name is " + __father__ +
+                    //"Guardian's name is " + __guardian__;
+            );
+        }
+    }
 
-        Student[] students = new Student[utils.Utils.studentCounter];
+    public static void main(String[] args){
+        utils.Utils.countStudents(); // to set a value for studentCount
+
+        Student[] students = new Student[utils.Utils.studentCount];
         // set student's data
         try {
             String line;
@@ -26,27 +43,17 @@ public class StudentReport {
                     students[ctr].setLastName(values[1]);
                     students[ctr].setFirstName(values[2]);
                     students[ctr].setDegreeCode(values[3]);
-                    students[ctr].setAddresses(utils.Utils.listAddresses(students[ctr].getId()));
-
+                    students[ctr].setAddresses(Objects.requireNonNull(
+                            Utils.listAddresses(students[ctr].getId()))); // require non null list
                     ctr++;
                 }
+            } else {
+                System.out.println("Buffered Reader is null.");
             }
-
-            for(Student s : students){
-                System.out.println("Student id is " + s.getId() +
-                                    " Student name is" + s.getLastName().toUpperCase()+s.getFirstName()
-                                    //"Studying " + __convertToCourse__ s.getDegreeCode() +
-                                    //__city__ + "address is" + Arrays.toString(s.getAddresses())); +
-                                    //__prov__ + "address is" + __address__ +
-                                    //"Mother's name is " + __mother__ +
-                                    //"Father's name is " + __father__ +
-                                    //"Guardian's name is " + __guardian__;
-                );
-            }
+            printReport(students);
 
         } catch (Exception e){
             System.out.println(e);
         }
-
     }
 }

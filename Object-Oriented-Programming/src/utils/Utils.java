@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Utils {
-    public static int studentCounter = 0;
+    public static int studentCount = 0;
     public static final String pathStudInfo = "studentData/StudInfo.csv";
     public static final String pathAddressInfo = "studentData/AddressInfo.csv";
     public static final String pathParentInfo = "studentData/ParentInfo.csv";
@@ -35,7 +35,7 @@ public class Utils {
             e.printStackTrace();
         }
 
-        studentCounter = ctr;
+        studentCount = ctr;
     }
 
     public static String[] listAddresses(int id){

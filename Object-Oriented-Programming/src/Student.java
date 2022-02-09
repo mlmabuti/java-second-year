@@ -2,6 +2,8 @@ public class Student {
     private int id; String lastName, firstName, degreeCode, father, mother, guardian;
     private String[] addresses;
 
+
+
     public void setId(int id){
         this.id = id;
     }
