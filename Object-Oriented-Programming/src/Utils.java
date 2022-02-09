@@ -38,46 +38,8 @@ public class Utils {
         studentCount = ctr;
     }
 
-    public static Student[] setStudentData(){
-        Utils.countStudents(); // to set a value for studentCount
-
-        Student[] students = new Student[Utils.studentCount];
-        // set student's data
-        try {
-            String line;
-            BufferedReader br = Utils.createBuffer(Utils.pathStudInfo);
-            int ctr = 0;
-            if (br != null) { // prevent null pointer
-                while ((line = br.readLine()) != null){
-                    String[] values = line.split(","); // split by comma
-                    students[ctr] = new Student(); // fill array with student objects
-                    // set student data
-                    students[ctr].setId(Integer.parseInt(values[0]));
-                    students[ctr].setLastName(values[1]);
-                    students[ctr].setFirstName(values[2]);
-                    students[ctr].setDegreeCode(values[3]);
-                    students[ctr].setAddresses(Objects.requireNonNull(
-                                    Utils.listAddresses(Integer.parseInt(values[0])))[0],
-                            Objects.requireNonNull(Utils.listAddresses(Integer.parseInt(values[0])))[1]
-                    ); // require non null 2d arr
-                    students[ctr].setMother(listParentGuardian(Integer.parseInt(values[0]))[0]);
-                    students[ctr].setFather(listParentGuardian(Integer.parseInt(values[0]))[1]);
-                    students[ctr].setGuardian(listParentGuardian(Integer.parseInt(values[0]))[2]);
-                    ctr++;
-                }
-            } else {
-                System.out.println("Buffered Reader is null.");
-            }
-            return students;
-
-        } catch (Exception e){
-            System.out.println(e);
-            return null;
-        }
-    }
-
     public static String[][] listAddresses(int id){
-        String line = ""; // for each line in the csv
+        String line; // for each line in the csv
         int ctr = 0;
 
         try {
@@ -115,21 +77,12 @@ public class Utils {
     }
 
     public static String[] listParentGuardian(int id){
-        String line="", mother ="", father="", guardian="";
-        int ctr = 0;
+        String line, mother ="", father="", guardian="";
 
         try {
             BufferedReader br = Utils.createBuffer(pathParentInfo);
             if (br != null) { // to avoid null pointer
-                // to count parents or guardian by duplicate ids
-                while ((line = br.readLine()) != null){
-                    String[] values = line.split(","); // split by comma
-                    if (id == Integer.parseInt(values[0])){ // count by duplicated ids
-                        ctr++;
-                    }
-                }
                 // to append addresses into addresses array
-                ctr = 0;
                 br = Utils.createBuffer(pathParentInfo);
 
                 if (br != null) {
@@ -142,7 +95,6 @@ public class Utils {
                                 case "G" : guardian = values[2]; break;
                             }
 
-                            ctr++;
                         }
                     }
                 }
@@ -154,4 +106,41 @@ public class Utils {
         return null;
     }
 
+    public static Student[] setStudentData(){
+        Utils.countStudents(); // to set a value for studentCount
+
+        Student[] students = new Student[Utils.studentCount];
+        // set student's data
+        try {
+            String line;
+            BufferedReader br = Utils.createBuffer(Utils.pathStudInfo);
+            int ctr = 0;
+            if (br != null) { // prevent null pointer
+                while ((line = br.readLine()) != null){
+                    String[] values = line.split(","); // split by comma
+                    students[ctr] = new Student(); // fill array with student objects
+                    // set student data
+                    students[ctr].setId(Integer.parseInt(values[0]));
+                    students[ctr].setLastName(values[1]);
+                    students[ctr].setFirstName(values[2]);
+                    students[ctr].setDegreeCode(values[3]);
+                    students[ctr].setAddresses(Objects.requireNonNull(
+                                    Utils.listAddresses(Integer.parseInt(values[0])))[0],
+                            Objects.requireNonNull(Utils.listAddresses(Integer.parseInt(values[0])))[1]
+                    ); // require non null 2d arr
+                    students[ctr].setMother(listParentGuardian(Integer.parseInt(values[0]))[0]);
+                    students[ctr].setFather(listParentGuardian(Integer.parseInt(values[0]))[1]);
+                    students[ctr].setGuardian(listParentGuardian(Integer.parseInt(values[0]))[2]);
+                    ctr++;
+                }
+            } else {
+                System.out.println("Buffered Reader is null.");
+            }
+            return students;
+
+        } catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
 }

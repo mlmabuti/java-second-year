@@ -1,6 +1,6 @@
 // confusions: studfile? rowstudentspecific?
 
-// todo: setup address city or prov, mother, father, guardian. only print if the fields exist
+// use constructors, add new csv data to test, refactor/shorten/simplify code, do something about null pointers
 
 import java.util.Objects;
 
