@@ -2,8 +2,6 @@ public class Student {
     private int id; String lastName, firstName, degreeCode, father, mother, guardian;
     private String[] addresses;
 
-
-
     public void setId(int id){
         this.id = id;
     }
@@ -38,4 +36,9 @@ public class Student {
     public String getDegreeCode() { return degreeCode; }
 
     public String[] getAddresses(){ return this.addresses; }
+
+    public String getDegreeName() {
+        Degree degree = new Degree(this.degreeCode);
+        return degree.getDegreeName();
+    }
 }

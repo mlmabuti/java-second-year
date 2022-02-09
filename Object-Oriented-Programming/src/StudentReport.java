@@ -13,13 +13,14 @@ public class StudentReport {
     public static void printReport(Student[] students){
         for(Student s : students){
             System.out.println("Student id is " + s.getId() +
-                            " Student name is " + s.getLastName().toUpperCase()+", "+s.getFirstName()
-                    //"Studying " + __convertToCourse__ s.getDegreeCode() +
+                            "\nStudent name is " + s.getLastName().toUpperCase()+", "+s.getFirstName() +
+                    "\nStudying " + s.getDegreeName()
                     //__city__ + "address is" + Arrays.toString(s.getAddresses())); +
                     //__prov__ + "address is" + __address__ +
                     //"Mother's name is " + __mother__ +
                     //"Father's name is " + __father__ +
                     //"Guardian's name is " + __guardian__;
+                    + "\n"
             );
         }
     }
