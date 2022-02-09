@@ -1,5 +1,6 @@
 public class Student {
-    int id; String lastName, firstName, degreeCode;
+    private int id; String lastName, firstName, degreeCode, father, mother, guardian;
+    private String[] addresses;
 
     public void setId(int id){
         this.id = id;
@@ -17,6 +18,11 @@ public class Student {
         this.degreeCode = degreeCode;
     }
 
+    public void setAddresses(String[] addresses){
+        this.addresses = new String[addresses.length];
+        System.arraycopy(addresses, 0, this.addresses, 0, addresses.length);
+    }
+
     public int getId(){
         return this.id;
     }
@@ -31,5 +37,9 @@ public class Student {
 
     public String getDegreeCode() {
         return degreeCode;
+    }
+
+    public String[] getAddresses(String[] addresses){
+        return this.addresses;
     }
 }

@@ -1,3 +1,5 @@
+import utils.Utils;
+
 import java.io.BufferedReader;
 import java.util.Arrays;
 
@@ -15,16 +17,20 @@ public class StudentReport {
             String line;
             BufferedReader brStudent = utils.Utils.createBuffer(utils.Utils.pathStudInfo);
             int ctr = 0;
-            while ((line = brStudent.readLine()) != null){
-                String[] values = line.split(","); // split by comma
-                students[ctr] = new Student(); // fill array with student objects
+            if (brStudent != null) { // prevent null pointer
+                while ((line = brStudent.readLine()) != null){
+                    String[] values = line.split(","); // split by comma
+                    students[ctr] = new Student(); // fill array with student objects
 
-                students[ctr].setId(Integer.parseInt(values[0]));
-                students[ctr].setLastName(values[1]);
-                students[ctr].setFirstName(values[2]);
-                students[ctr].setDegreeCode(values[3]);
+                    // set student data
+                    students[ctr].setId(Integer.parseInt(values[0]));
+                    students[ctr].setLastName(values[1]);
+                    students[ctr].setFirstName(values[2]);
+                    students[ctr].setDegreeCode(values[3]);
+                    System.out.println(Arrays.toString(utils.Utils.listAddresses(s.getId())));
 
-                ctr++;
+                    ctr++;
+                }
             }
 
             for(Student s : students){
