@@ -10,10 +10,8 @@ public class StudentReport {
         for(Student s : students){
             System.out.println("Student id is " + s.getId() +
                             "\nStudent name is " + s.getLastName().toUpperCase()+", "+s.getFirstName() +
-                    "\nStudying " + s.getDegreeName() + "\n" +
-                    Address.getCityProvAddress(s.getAddresses(),s.getCityOrProv()) +
-                     // __city__ + "address is" + Arrays.toString(s.getAddresses())); +
-                    //__prov__ + "address is" + __address__ +
+                            "\nStudying " + s.getDegreeName() + "\n" +
+                            Address.getCityProvAddress(s.getAddresses(),s.getCityOrProv()) +
                     //"Mother's name is " + __mother__ +
                     //"Father's name is " + __father__ +
                     //"Guardian's name is " + __guardian__;

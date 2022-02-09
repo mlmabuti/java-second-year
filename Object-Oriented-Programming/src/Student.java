@@ -35,14 +35,9 @@ public class Student {
         return this.firstName;
     }
 
-    String getDegreeCode() { return degreeCode; }
-
     String[] getAddresses(){ return this.addresses; }
 
     String[] getCityOrProv() {return this.cityOrProv;}
 
-    String getDegreeName() {
-        Degree degree = new Degree(this.degreeCode);
-        return degree.getDegreeName();
-    }
+    String getDegreeName() { return this.degreeCode; }
 }
