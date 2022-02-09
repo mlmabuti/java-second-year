@@ -31,6 +31,12 @@ public class Student {
 
     int getId(){ return this.id; }
 
+    String getMother(){ return this.mother;}
+
+    String getFather() {return this.father;}
+
+    String getGuardian() {return this.guardian;}
+
     String getLastName(){
         return this.lastName;
     }
@@ -43,5 +49,5 @@ public class Student {
 
     String[] getCityOrProv() {return this.cityOrProv;}
 
-    String getDegreeName() { return this.degreeCode; }
+    String getDegreeName() { return Degree.getDegreeName(this.degreeCode); }
 }

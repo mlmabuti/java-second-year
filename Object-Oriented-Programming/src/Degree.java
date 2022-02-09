@@ -1,5 +1,5 @@
 public class Degree {
-    String getDegreeName(String degreeCode){
+    static String getDegreeName(String degreeCode){
         switch(degreeCode){
             case "BSCS" : return "BS Computer Science";
             case "BSECE" : return "BS Electronics Engineering";

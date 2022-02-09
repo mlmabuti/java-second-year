@@ -60,6 +60,9 @@ public class Utils {
                                     Utils.listAddresses(Integer.parseInt(values[0])))[0],
                             Objects.requireNonNull(Utils.listAddresses(Integer.parseInt(values[0])))[1]
                     ); // require non null 2d arr
+                    students[ctr].setMother(listParentGuardian(Integer.parseInt(values[0]))[0]);
+                    students[ctr].setFather(listParentGuardian(Integer.parseInt(values[0]))[1]);
+                    students[ctr].setGuardian(listParentGuardian(Integer.parseInt(values[0]))[2]);
                     ctr++;
                 }
             } else {
