@@ -1,6 +1,8 @@
 // confusions: studfile? rowstudentspecific?
 
 // use constructors, add new csv data to test, refactor/shorten/simplify code, do something about null pointers
+// remove utils
+// object withing an object might mean you should create address, degree, parent objects inside the student
 
 import java.util.Objects;
 
