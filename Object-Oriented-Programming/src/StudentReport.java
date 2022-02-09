@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 // NOTE: use getters and setters, student report must have an array of objects,
 // loop through each object and use getters/setters
-
 public class StudentReport {
 
     public static void main(String[] args){
@@ -27,14 +26,22 @@ public class StudentReport {
                     students[ctr].setLastName(values[1]);
                     students[ctr].setFirstName(values[2]);
                     students[ctr].setDegreeCode(values[3]);
-                    System.out.println(Arrays.toString(utils.Utils.listAddresses(s.getId())));
+                    students[ctr].setAddresses(utils.Utils.listAddresses(students[ctr].getId()));
 
                     ctr++;
                 }
             }
 
             for(Student s : students){
-                System.out.println(s.getId() + s.getFirstName()+ s.getLastName() + s.getDegreeCode());
+                System.out.println("Student id is " + s.getId() +
+                                    " Student name is" + s.getLastName().toUpperCase()+s.getFirstName()
+                                    //"Studying " + __convertToCourse__ s.getDegreeCode() +
+                                    //__city__ + "address is" + Arrays.toString(s.getAddresses())); +
+                                    //__prov__ + "address is" + __address__ +
+                                    //"Mother's name is " + __mother__ +
+                                    //"Father's name is " + __father__ +
+                                    //"Guardian's name is " + __guardian__;
+                );
             }
 
         } catch (Exception e){

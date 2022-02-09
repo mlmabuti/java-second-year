@@ -23,9 +23,7 @@ public class Student {
         System.arraycopy(addresses, 0, this.addresses, 0, addresses.length);
     }
 
-    public int getId(){
-        return this.id;
-    }
+    public int getId(){ return this.id; }
 
     public String getLastName(){
         return this.lastName;
@@ -35,11 +33,7 @@ public class Student {
         return this.firstName;
     }
 
-    public String getDegreeCode() {
-        return degreeCode;
-    }
+    public String getDegreeCode() { return degreeCode; }
 
-    public String[] getAddresses(String[] addresses){
-        return this.addresses;
-    }
+    public String[] getAddresses(){ return this.addresses; }
 }
