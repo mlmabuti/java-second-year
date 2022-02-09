@@ -39,6 +39,8 @@ public class Student {
 
     String[] getAddresses(){ return this.addresses; }
 
+    String[] getCityOrProv() {return this.cityOrProv;}
+
     String getDegreeName() {
         Degree degree = new Degree(this.degreeCode);
         return degree.getDegreeName();
