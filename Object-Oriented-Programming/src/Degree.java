@@ -1,5 +1,5 @@
 public class Degree {
-    private String degreeName, degreeCode;
+    private String degreeCode;
 
     Degree(String degreeCode){
         this.degreeCode = degreeCode;
@@ -7,18 +7,10 @@ public class Degree {
 
     public String getDegreeName(){
         switch(this.degreeCode){
-            case "BSCS" :
-                this.degreeName = "BS Computer Science";
-                return this.degreeName;
-            case "BSECE" :
-                this.degreeName = "BS Electronics Engineering";
-                return this.degreeName;
-            case "BSIE" :
-                this.degreeName = "BS Industrial Engineering";
-                return this.degreeName;
-            case "BSCE" :
-                this.degreeName = "BS Civil Engineering";
-                return this.degreeName;
+            case "BSCS" : return "BS Computer Science";
+            case "BSECE" : return "BS Electronics Engineering";
+            case "BSIE" : return "BS Industrial Engineering";
+            case "BSCE" : return "BS Civil Engineering";
         }
         return "Invalid Code.";
     }

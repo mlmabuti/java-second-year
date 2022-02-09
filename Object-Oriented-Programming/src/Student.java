@@ -23,7 +23,6 @@ public class Student {
         this.cityOrProv = new String[cityOrProv.length];
         System.arraycopy(addresses, 0, this.addresses, 0, addresses.length);
         System.arraycopy(cityOrProv, 0, this.cityOrProv, 0, cityOrProv.length);
-
     }
 
     public int getId(){ return this.id; }

@@ -8,7 +8,6 @@ import java.util.Objects;
 // todo: setup address city or prov, mother, father, guardian. only print if the fields exist
 
 public class StudentReport {
-
     public static void printReport(Student[] students){
         for(Student s : students){
             System.out.println("Student id is " + s.getId() +
