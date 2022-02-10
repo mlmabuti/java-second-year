@@ -15,8 +15,7 @@ class StudentReport {
                             + "\nStudying " + s.degree.getDegreeName()
                             + "\n" + s.getAddresses()
                             + s.getParents()
-                            + "\n"
-            );
+                            + "\n" );
         }
     }
 

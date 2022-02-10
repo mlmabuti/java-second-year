@@ -80,13 +80,9 @@ class Student{
 
     String getFirstName() { return this.firstName; }
 
-    void setDegree(Degree degree){
-        this.degree = degree;
-    }
+    void setDegree(Degree degree){ this.degree = degree; }
 
-    void setAddresses(ArrayList<Address> addresses){
-        this.addresses = addresses;
-    }
+    void setAddresses(ArrayList<Address> addresses){ this.addresses = addresses; }
 
     void setParents(ArrayList<Parent> parents){ this.parents = parents; }
 }
