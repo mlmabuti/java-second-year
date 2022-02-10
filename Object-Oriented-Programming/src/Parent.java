@@ -1,6 +1,8 @@
 import java.util.Objects;
 
 public class Parent {
+    String parentCode;
+
     static String getParentGuardian(String[] parentGuardian){
         String str = "";
         if (!Objects.equals(parentGuardian[0], "")) {

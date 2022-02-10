@@ -9,6 +9,7 @@ public class Utils {
     public static int studentCount = 0;
     public static final String pathStudInfo = "studentData/StudInfo.csv";
     public static final String pathParentInfo = "studentData/ParentInfo.csv";
+    public static final String pathAddressInfo = "studentData/AddressInfo.csv";
 
     public static BufferedReader createBuffer(String path){
         try {
@@ -37,7 +38,43 @@ public class Utils {
         studentCount = ctr;
     }
 
+    public static String[][] listAddresses(int id){
+        String line; // for each line in the csv
+        int ctr = 0;
 
+        try {
+            BufferedReader br = Utils.createBuffer(pathAddressInfo);
+            if (br != null) { // to avoid null pointer
+                // to count addresses by duplicate ids
+                while ((line = br.readLine()) != null){
+                    String[] values = line.split(","); // split by comma
+                    if (id == Integer.parseInt(values[0])){ // count by duplicated ids
+                        ctr++;
+                    }
+                }
+                // to append addresses into addresses array
+                String[] addresses = new String[ctr];
+                String[] cityOrProv = new String[ctr];
+                ctr = 0;
+                br = Utils.createBuffer(pathAddressInfo);
+
+                if (br != null) {
+                    while ((line = br.readLine()) != null){
+                        String[] values = line.split(","); // split by comma
+                        if (id == Integer.parseInt(values[0])){
+                            addresses[ctr] = values[2];
+                            cityOrProv[ctr] = values[1];
+                            ctr++;
+                        }
+                    }
+                }
+                return new String[][]{addresses, cityOrProv};
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public static String[] listParentGuardian(int id){
         String line, mother ="", father="", guardian="";
@@ -87,13 +124,13 @@ public class Utils {
                     students[ctr].setLastName(values[1]);
                     students[ctr].setFirstName(values[2]);
                     students[ctr].setDegreeCode(values[3]);
-                    students[ctr].setAddresses(Objects.requireNonNull(
-                                    Address.listAddresses(Integer.parseInt(values[0])))[0],
-                            Objects.requireNonNull(Address.listAddresses(Integer.parseInt(values[0])))[1]
-                    ); // require non null 2d arr
-                    students[ctr].setMother(listParentGuardian(Integer.parseInt(values[0]))[0]);
-                    students[ctr].setFather(listParentGuardian(Integer.parseInt(values[0]))[1]);
-                    students[ctr].setGuardian(listParentGuardian(Integer.parseInt(values[0]))[2]);
+                   // students[ctr].setAddresses(Objects.requireNonNull(
+                   //                 Utils.listAddresses(Integer.parseInt(values[0])))[0],
+                   //         Objects.requireNonNull(Utils.listAddresses(Integer.parseInt(values[0])))[1]
+                   // ); // require non null 2d arr
+                   // students[ctr].setMother(listParentGuardian(Integer.parseInt(values[0]))[0]);
+                   // students[ctr].setFather(listParentGuardian(Integer.parseInt(values[0]))[1]);
+                   // students[ctr].setGuardian(listParentGuardian(Integer.parseInt(values[0]))[2]);
                     ctr++;
                 }
             } else {
