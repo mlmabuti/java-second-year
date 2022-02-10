@@ -1,9 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 class Address{
-    ArrayList<Address> addresses = new ArrayList<>();
+    Address[] addresses = new Address[2];
     String location, addressType;
 
     Address() {}
@@ -17,6 +16,7 @@ class Address{
         String rowAddress;
         BufferedReader br = Utils.createBuffer(pathAddressInfo);
 
+        int ctr = 0;
         try {
             while ((rowAddress= br.readLine()) != null) { // loop until current line in csv is not null
                 String[] rowAddressSpecific = rowAddress.split(","); // split each like into an array per ","
@@ -29,7 +29,8 @@ class Address{
                             rowAddressSpecific[1]);
 
                     // add address instance to list of addresses
-                    addresses.add(a);
+                    addresses[ctr] = a;
+                    ctr++;
                 }
             }
         } catch (IOException e) { System.out.println("Error: IOException"); }
@@ -44,7 +45,7 @@ class Address{
         };
     }
 
-    ArrayList<Address> getAddresses(){ return this.addresses; }
+    Address[] getAddresses(){ return this.addresses; }
 
     String getLocation() { return this.location; }
 }
