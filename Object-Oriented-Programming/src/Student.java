@@ -16,16 +16,6 @@ class Student{
         this.firstName = firstName;
     }
 
-    void setDegree(Degree degree){
-        this.degree = degree;
-    }
-
-    void setAddresses(ArrayList<Address> addresses){
-        this.addresses = addresses;
-    }
-
-    void setParents(ArrayList<Parent> parents){ this.parents = parents; }
-
     static void processStudents(){
         final String pathStudInfo = "studentData/StudInfo.csv";
         String rowStudent;
@@ -49,7 +39,7 @@ class Student{
 
                 // create address and store list of addresses into student
                 Address a = new Address();
-                a.processAddress();
+                a.processAddress(rowStudentSpecific[0]);
                 s.setAddresses(a.getAddresses());
 
                 //create parent and store list of parents into student
@@ -61,6 +51,30 @@ class Student{
                 students.add(s);
             }
         } catch (IOException e) { System.out.println("Error: IOException"); }
+    }
+
+    void setDegree(Degree degree){
+        this.degree = degree;
+    }
+
+    void setAddresses(ArrayList<Address> addresses){
+        this.addresses = addresses;
+    }
+
+    void setParents(ArrayList<Parent> parents){ this.parents = parents; }
+
+    String getId() { return this.id+""; }
+
+    String getLastName() { return this.lastName; }
+
+    String getFirstName() { return this.firstName; }
+
+    String getAddresses(){
+        String str = "";
+        for (int i = 0; i < this.addresses.size() && this.addresses.get(i) != null; i++){
+            str += addresses.get(i).getAddressType() + " address is " + addresses.get(i).getLocation() + "\n";
+        }
+        return str;
     }
 }
 

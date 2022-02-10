@@ -1,5 +1,6 @@
 class Degree {
     String degreeCode, degreeName;
+
     Degree(String degreeCode){
         this.degreeCode = degreeCode;
 
