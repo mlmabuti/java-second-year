@@ -24,25 +24,9 @@ public class StudentReport {
         }
     }
 
-    private static void loadStudents(){
+    private static void loadStudents(){ }
 
-    }
+    private static void printReport(ArrayList<Student> students){ }
 
-    private static void printReport(ArrayList<Student> students){
-        for(Student s : students){
-            System.out.println("Student id is " + s.getId() +
-                            "\nStudent name is " + s.getLastName().toUpperCase()+", "+s.getFirstName() +
-                            "\nStudying " + s.getDegreeName() +
-                            "\n"// + s.getFormattedAddresses() //+ s.getAddresses() + s.getCityOrProv()
-                            //Address.getCityProvAddress(s.getAddresses(),s.getCityOrProv()) +
-                            //Parent.getParentGuardian(new String[] {s.getMother(), s.getFather(), s.getGuardian()})
-            );
-            s.setAddresses("P", "San Carlos City");
-            s.getFormattedAddresses();
-        }
-    }
-
-    public static void main(String[] args){
-        printReport(new ArrayList<Student>());
-    }
+    public static void main(String[] args){ }
 }
