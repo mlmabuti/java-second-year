@@ -1,5 +1,19 @@
 import java.util.ArrayList;
 
+class Pair {
+    private final String k, v;
+
+    public Pair(String k, String v)
+    {
+        this.k = k;
+        this.v = v;
+    }
+
+    String getKey() {return this.k;}
+
+    String getValue() {return this.v;}
+}
+
 public class Student {
     private int id;
     private String lastName, firstName, degreeCode;
@@ -15,17 +29,11 @@ public class Student {
         this.addresses = addresses;
     }
 
-    Student(){ }
+    void setAddresses(String addressType, String address){ this.addresses.add(new Pair(addressType, address));}
 
-    void setAddresses(String address, String addressType){ this.addresses.add(new Pair(address, addressType)); }
+    void setParents(String parentCode, String parent){ this.parents.add(new Pair(parentCode, parent));}
 
     int getId(){ return this.id; }
-
-    // String getMother(){ return this.mother;}
-
-    // String getFather() {return this.father;}
-
-    // String getGuardian() {return this.guardian;}
 
     String getLastName(){ return this.lastName; }
 
@@ -36,7 +44,7 @@ public class Student {
     void getFormattedAddresses(){
         //for (int i = 0; i < this.addresses.size(); i++){
         //}
-        System.out.println(this.addresses.get(0).addressType);
+        System.out.println(this.addresses.get(0));
     }
 
     String getDegreeName() {
