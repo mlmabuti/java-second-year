@@ -2,20 +2,23 @@
 
 // use constructors, add new csv data to test, refactor/shorten/simplify code, do something about null pointers
 // remove utils
-// object withing an object might mean you should create address, degree, parent objects inside the student
+// object within an object might mean you should create address, degree, parent objects inside the student
 // use arraylist and pairs
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class StudentReport {
-    public static final String pathStudInfo = "studentData/StudInfo.csv";
-    public static final String pathParentInfo = "studentData/ParentInfo.csv";
-    public static final String pathAddressInfo = "studentData/AddressInfo.csv";
+class StudentReport {
+    static final String pathStudInfo = "studentData/StudInfo.csv";
+    static final String pathParentInfo = "studentData/ParentInfo.csv";
+    static final String pathAddressInfo = "studentData/AddressInfo.csv";
 
-    public static BufferedReader createBuffer(String path){
+    static final ArrayList<Student> students = new ArrayList<Student>();
+
+    static BufferedReader createBuffer(String path){
         try {
             return new BufferedReader(new FileReader(path));
         } catch (FileNotFoundException e){
@@ -24,9 +27,40 @@ public class StudentReport {
         }
     }
 
-    private static void loadStudents(){ }
+    static void studFile(){
+        String rowStudent = "";
 
-    private static void printReport(ArrayList<Student> students){ }
+        BufferedReader br = createBuffer(pathStudInfo);
+        try {
+            while ((rowStudent = br.readLine())!= null){ // loop until current line in csv is not null
+                String[] values = rowStudent.split(","); // split each like into an array per ","
 
-    public static void main(String[] args){ }
+                // create student instance
+                Student s = new Student(Integer.parseInt(
+                        values[0]),
+                        values[1].toUpperCase(),
+                        values[2],
+                        values[3]);
+
+                // append student instance to list of students
+                students.add(s);
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    static void printReport(ArrayList<Student> students) {
+        for(Student s : students){
+            System.out.println(s);
+        }
+    }
+
+
+    public static void main(String[] args){
+        studFile();
+        printReport(students);
+    }
 }
