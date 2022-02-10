@@ -5,6 +5,9 @@
 // object within an object might mean you should create address, degree, parent objects inside the student
 // use arraylist and pairs
 
+// NOTE: add public access modifier if ever this project needs to be used somewhere else.
+//       studFile instruction provides confusion, rowStudentSpecific seemed redundant it's been omitted.
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -39,8 +42,14 @@ class StudentReport {
                 Student s = new Student(Integer.parseInt(
                         values[0]),
                         values[1].toUpperCase(),
-                        values[2],
-                        values[3]);
+                        values[2]);
+
+                // create degree instance
+                Degree d = new Degree(values[3]);
+
+                // store degree instance into student instance
+                s.setDegree(d);
+
 
                 // append student instance to list of students
                 students.add(s);

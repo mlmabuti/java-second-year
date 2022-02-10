@@ -10,12 +10,17 @@ class Pair{
 
 class Student{
     int id;
-    String lastName, firstName, degreeCode;
+    String lastName, firstName;
+    Degree degree;
     ArrayList<Pair> address, parents;
 
-    Student(int id, String lastName, String firstName, String degreeCode){
+    Student(int id, String lastName, String firstName){
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
+    }
+
+    void setDegree(Degree degree){
+        this.degree = degree;
     }
 }

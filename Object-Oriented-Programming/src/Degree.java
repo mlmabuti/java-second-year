@@ -10,4 +10,6 @@ class Degree {
             case "BSECE" : this.degreeName = "BS Electronics Engineering"; break;
         }
     }
+
+    String getDegreeName(){ return this.degreeName; }
 }
