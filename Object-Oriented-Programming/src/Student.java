@@ -3,11 +3,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class Student{
+    static final ArrayList<Student> students = new ArrayList<>();
     int id;
     String lastName, firstName;
     Degree degree;
-    Address addresses;
-    Parent parents;
+    ArrayList<Address> addresses;
+    ArrayList<Parent> parents;
+
 
     Student(int id, String lastName, String firstName){
         this.id = id;
@@ -19,37 +21,44 @@ class Student{
         this.degree = degree;
     }
 
-    static void processStudents(ArrayList<Student> students){
+    void setAddresses(ArrayList<Address> addresses){
+        this.addresses = addresses;
+    }
+
+    void setParents(ArrayList<Parent> parents){ this.parents = parents; }
+
+    static void processStudents(){
         final String pathStudInfo = "studentData/StudInfo.csv";
-
         String rowStudent;
-
         BufferedReader br = Utils.createBuffer(pathStudInfo);
+
         try {
             while ((rowStudent = br.readLine())!= null){ // loop until current line in csv is not null
-                String[] values = rowStudent.split(","); // split each like into an array per ","
+                String[] rowStudentSpecific = rowStudent.split(","); // split each like into an array per ","
 
-                // create student instance
+                // student instance
                 Student s = new Student(Integer.parseInt(
-                        values[0]),
-                        values[1].toUpperCase(),
-                        values[2]);
+                        rowStudentSpecific[0]),
+                        rowStudentSpecific[1].toUpperCase(),
+                        rowStudentSpecific[2]);
 
-                // create degree instance
-                Degree d = new Degree(values[3]);
+                // degree instance
+                Degree d = new Degree(rowStudentSpecific[3]);
 
                 // store degree instance into student instance
                 s.setDegree(d);
 
-                // processAddress();
+                Address a = new Address();
+
+                a.processAddress();
+                s.setAddresses(a.getAddresses());
+
                 // processParent();
 
                 // add student instance to list of students
                 students.add(s);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
     }
 }
 
