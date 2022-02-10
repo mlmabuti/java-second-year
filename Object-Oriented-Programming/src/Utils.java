@@ -2,8 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+// helper class
 public class Utils {
-    // helper class
 
     static BufferedReader createBuffer(String path){
         try {

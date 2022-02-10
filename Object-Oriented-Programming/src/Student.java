@@ -70,11 +70,14 @@ class Student{
     String getFirstName() { return this.firstName; }
 
     String getAddresses(){
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < this.addresses.size() && this.addresses.get(i) != null; i++){
-            str += addresses.get(i).getAddressType() + " address is " + addresses.get(i).getLocation() + "\n";
+            str.append(addresses.get(i).getAddressType())
+                    .append(" address is ")
+                    .append(addresses.get(i).getLocation())
+                    .append("\n");
         }
-        return str;
+        return str.toString();
     }
 }
 

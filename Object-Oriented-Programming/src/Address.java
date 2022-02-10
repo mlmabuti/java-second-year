@@ -38,11 +38,11 @@ class Address{
     ArrayList<Address> getAddresses(){ return this.addresses; }
 
     String getAddressType(){
-        switch(this.addressType){
-            case "P" : return "Provincial";
-            case "C" : return "City";
-        }
-        return "Unidentified";
+        return switch (this.addressType) {
+            case "P" -> "Provincial";
+            case "C" -> "City";
+            default -> "Unidentified";
+        };
     }
 
     String getLocation() { return this.location; }
