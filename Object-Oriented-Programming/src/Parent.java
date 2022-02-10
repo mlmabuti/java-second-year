@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class Parent {
     String parentCode, parentName;
-    ArrayList<Parent> parents = new ArrayList<>();
+    Parent[] parents = new Parent[3];
 
     Parent(){ }
     Parent(String parentCode, String parentName){
@@ -17,6 +17,7 @@ class Parent {
         String rowParent;
         BufferedReader br = Utils.createBuffer(pathParentInfo);
 
+        int ctr = 0;
         try {
             while ((rowParent = br.readLine()) != null){
                 String[] rowParentSpecific = rowParent.split(",");
@@ -24,7 +25,8 @@ class Parent {
                 // only store into parent object if the id matches the current student being processed
                 if (id.equals(rowParentSpecific[0])) {
                     Parent p = new Parent(rowParentSpecific[1], rowParentSpecific[2]);
-                    parents.add(p);
+                    parents[ctr] = p;
+                    ctr++;
                 }
             }
         } catch (IOException e) { System.out.println("Error: IOException");}
@@ -43,5 +45,5 @@ class Parent {
 
     String getParentName(){ return this.parentName; }
 
-    ArrayList<Parent> getParents(){ return this.parents; }
+    Parent[] getParents(){ return this.parents; }
 }

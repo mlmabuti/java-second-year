@@ -8,8 +8,7 @@ class StudentReport {
                             + s.getFirstName()
                             + "\nStudying " + s.degree.getDegreeName()
                             + "\n" + s.getAddresses()
-                            + s.getParents()
-                            + "\n" );
+                            + s.getParents());
         }
     }
 

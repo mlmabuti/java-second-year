@@ -8,7 +8,7 @@ class Student{
     String lastName, firstName;
     Degree degree;
     Address[] addresses;
-    ArrayList<Parent> parents;
+    Parent[] parents;
 
     Student(int id, String lastName, String firstName){
         this.id = id;
@@ -66,10 +66,11 @@ class Student{
 
     String getParents(){
         StringBuilder str = new StringBuilder();
-        for (int i = 0; i < this.parents.size() && this.parents.get(i) != null; i++){
-            str.append(this.parents.get(i).getParentCode())
+        for (int i = 0; i < this.parents.length && this.parents[i] != null; i++){
+            str.append(this.parents[i].getParentCode())
                     .append("'s name is ")
-                    .append(this.parents.get(i).getParentName());
+                    .append(this.parents[i].getParentName())
+                    .append("\n");
         }
         return str.toString();
     }
@@ -84,6 +85,6 @@ class Student{
 
     void setAddresses(Address[] addresses){ this.addresses = addresses; }
 
-    void setParents(ArrayList<Parent> parents){ this.parents = parents; }
+    void setParents(Parent[] parents){ this.parents = parents; }
 }
 
