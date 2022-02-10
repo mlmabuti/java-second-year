@@ -44,7 +44,7 @@ class Student{
 
                 //create parent and store list of parents into student
                 Parent p = new Parent();
-                p.processParent();
+                p.processParent(rowStudentSpecific[0]);
                 s.setParents(p.getParents());
 
                 // add student instance to list of students
@@ -52,22 +52,6 @@ class Student{
             }
         } catch (IOException e) { System.out.println("Error: IOException"); }
     }
-
-    void setDegree(Degree degree){
-        this.degree = degree;
-    }
-
-    void setAddresses(ArrayList<Address> addresses){
-        this.addresses = addresses;
-    }
-
-    void setParents(ArrayList<Parent> parents){ this.parents = parents; }
-
-    String getId() { return this.id+""; }
-
-    String getLastName() { return this.lastName; }
-
-    String getFirstName() { return this.firstName; }
 
     String getAddresses(){
         StringBuilder str = new StringBuilder();
@@ -79,5 +63,31 @@ class Student{
         }
         return str.toString();
     }
+
+    String getParents(){
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < this.parents.size() && this.parents.get(i) != null; i++){
+            str.append(parents.get(i).getParentCode())
+                    .append("'s name is ")
+                    .append(parents.get(i).getParentName());
+        }
+        return str.toString();
+    }
+
+    String getId() { return this.id+""; }
+
+    String getLastName() { return this.lastName; }
+
+    String getFirstName() { return this.firstName; }
+
+    void setDegree(Degree degree){
+        this.degree = degree;
+    }
+
+    void setAddresses(ArrayList<Address> addresses){
+        this.addresses = addresses;
+    }
+
+    void setParents(ArrayList<Parent> parents){ this.parents = parents; }
 }
 

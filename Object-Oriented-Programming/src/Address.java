@@ -21,7 +21,7 @@ class Address{
             while ((rowAddress= br.readLine()) != null) { // loop until current line in csv is not null
                 String[] rowAddressSpecific = rowAddress.split(","); // split each like into an array per ","
 
-                // only if id matches
+                // only store into address object if the id matches the current student being processed
                 if (id.equals(rowAddressSpecific[0])) {
                     // address instance
                     Address a = new Address(
@@ -35,15 +35,16 @@ class Address{
         } catch (IOException e) { System.out.println("Error: IOException"); }
     }
 
-    ArrayList<Address> getAddresses(){ return this.addresses; }
-
     String getAddressType(){
+        // instead of returning the code ill just return the word
         return switch (this.addressType) {
             case "P" -> "Provincial";
             case "C" -> "City";
             default -> "Unidentified";
         };
     }
+
+    ArrayList<Address> getAddresses(){ return this.addresses; }
 
     String getLocation() { return this.location; }
 }

@@ -18,7 +18,10 @@ class StudentReport {
                             + s.getLastName().toUpperCase() + ", "
                             + s.getFirstName()
                             + "\nStudying " + s.degree.getDegreeName()
-                            + "\n" + s.getAddresses());
+                            + "\n" + s.getAddresses()
+                            + s.getParents()
+                            + "\n"
+            );
         }
     }
 
