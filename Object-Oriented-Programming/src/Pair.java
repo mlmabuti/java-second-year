@@ -1,9 +1,9 @@
 public class Pair {
-    int x, y;
+    String address, addressType;
 
-    public Pair(int x, int y)
+    public Pair(String addressType, String address)
     {
-        this.x = x;
-        this.y = y;
+        this.addressType = addressType;
+        this.address = address;
     }
 }

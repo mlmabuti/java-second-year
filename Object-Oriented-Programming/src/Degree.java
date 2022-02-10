@@ -3,10 +3,9 @@ public class Degree {
 
     Degree(String degreeCode){
         this.degreeCode = degreeCode;
-
         this.degreeName = processDegreeName(degreeCode);
-
     }
+
     String processDegreeName(String degreeCode){
         switch(degreeCode){
             case "BSCS" : return "BS Computer Science";
