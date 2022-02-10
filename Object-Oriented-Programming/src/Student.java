@@ -10,7 +10,6 @@ class Student{
     ArrayList<Address> addresses;
     ArrayList<Parent> parents;
 
-
     Student(int id, String lastName, String firstName){
         this.id = id;
         this.lastName = lastName;
@@ -48,17 +47,20 @@ class Student{
                 // store degree instance into student instance
                 s.setDegree(d);
 
+                // create address and store list of addresses into student
                 Address a = new Address();
-
                 a.processAddress();
                 s.setAddresses(a.getAddresses());
 
-                // processParent();
+                //create parent and store list of parents into student
+                Parent p = new Parent();
+                p.processParent();
+                s.setParents(p.getParents());
 
                 // add student instance to list of students
                 students.add(s);
             }
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) { System.out.println("Error: IOException"); }
     }
 }
 

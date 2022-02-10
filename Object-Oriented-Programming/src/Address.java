@@ -33,6 +33,6 @@ class Address{
                 addresses.add(a);
 
             }
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) { System.out.println("Error: IOException"); }
     }
 }
