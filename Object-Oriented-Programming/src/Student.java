@@ -56,9 +56,9 @@ class Student{
     String getAddresses(){
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < this.addresses.size() && this.addresses.get(i) != null; i++){
-            str.append(addresses.get(i).getAddressType())
+            str.append(this.addresses.get(i).getAddressType())
                     .append(" address is ")
-                    .append(addresses.get(i).getLocation())
+                    .append(this.addresses.get(i).getLocation())
                     .append("\n");
         }
         return str.toString();
@@ -67,9 +67,9 @@ class Student{
     String getParents(){
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < this.parents.size() && this.parents.get(i) != null; i++){
-            str.append(parents.get(i).getParentCode())
+            str.append(this.parents.get(i).getParentCode())
                     .append("'s name is ")
-                    .append(parents.get(i).getParentName());
+                    .append(this.parents.get(i).getParentName());
         }
         return str.toString();
     }
