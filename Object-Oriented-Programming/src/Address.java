@@ -45,7 +45,12 @@ class Address{
         };
     }
 
+    void setAddresses(Address[] addresses){ this.addresses = addresses;}
+
+    void setLocation(String location){ this.location = location; }
+
     Address[] getAddresses(){ return this.addresses; }
 
     String getLocation() { return this.location; }
+
 }

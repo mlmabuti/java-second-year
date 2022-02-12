@@ -3,7 +3,10 @@ class Degree {
 
     Degree(String degreeCode){
         this.degreeCode = degreeCode;
+        processDegree();
+    }
 
+    void processDegree(){
         switch (this.degreeCode) {
             case "BSCS" -> this.degreeName = "BS Computer Science";
             case "BSIE" -> this.degreeName = "BS Industrial Engineering";
@@ -12,5 +15,10 @@ class Degree {
         }
     }
 
-    String getDegreeName(){ return this.degreeName; }
+    void setDegreeCode(String degreeCode){ this.degreeCode = degreeCode; }
+
+    String getDegreeName(){
+        processDegree();
+        return this.degreeName;
+    }
 }

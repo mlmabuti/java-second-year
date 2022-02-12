@@ -42,6 +42,10 @@ class Parent {
         };
     }
 
+    void setParentCode(String parentCode){ this.parentCode = parentCode; }
+
+    void setParentName(String parentName){ this.parentName = parentName; }
+
     String getParentName(){ return this.parentName; }
 
     Parent[] getParents(){ return this.parents; }

@@ -81,6 +81,12 @@ class Student{
 
     String getFirstName() { return this.firstName; }
 
+    void setId(int id){ this.id = id;}
+
+    void setLastName(String lastName){ this.lastName = lastName; }
+
+    void setFirstName(String firstName){ this.firstName = firstName; }
+
     void setDegree(Degree degree){ this.degree = degree; }
 
     void setAddresses(Address[] addresses){ this.addresses = addresses; }
