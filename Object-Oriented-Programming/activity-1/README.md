@@ -1,4 +1,4 @@
-# Activity 1
+# Activity 1 and 2
 
 NOTES: 
 * using dynamic arrays for Address and Parent is definitely overkill
