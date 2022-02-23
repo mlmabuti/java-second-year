@@ -1,7 +1,10 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println(gcd(60,24));
-        System.out.println(recursiveGcd(62, 12));
+        System.out.println(gcd(60,0));
+
+        System.out.println(recursiveGcd(64, 48));
+        System.out.println(recursiveGcd(15, 45));
     }
 
     static int gcd(int m, int n){
