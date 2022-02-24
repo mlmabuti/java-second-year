@@ -1,20 +1,19 @@
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
         int n = 20;
-        ArrayList <Integer> arr = new ArrayList<>();
-        for (int p = 2 ; p <= n; p ++ ){
-            arr.add(p);
-            if (arr.get(p) != 0){
-                int j = p;
-                while (j <= n){
-                    arr.set(j, 0);
-                    j = j + p;
-                }
+        int[] arr = new int[n+1];
+        for (int i = 2; i <= arr.length; i++) arr[i-2] = i;
+
+        for (int p = 2; p * p <= n; p++) {
+            if (arr[p] != 0)
+            {
+                for (int i = p * p; i <= n; i += p) arr[i] = 0;
             }
         }
 
-        System.out.println(arr.toString());
+        System.out.println(Arrays.toString(arr));
     }
 }
