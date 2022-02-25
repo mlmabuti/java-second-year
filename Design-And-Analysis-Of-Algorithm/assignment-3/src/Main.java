@@ -1,6 +1,5 @@
 // Sieve of Eratosthenes | primes from 2 to n
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
