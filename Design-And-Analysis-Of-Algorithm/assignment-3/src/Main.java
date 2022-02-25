@@ -1,19 +1,30 @@
-// Sieve of Eratosthenes
+// Sieve of Eratosthenes | primes from 2 to n
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         int n = 20;
-        int[] arr = new int[n+1];
-        for (int i = 2; i <= arr.length; i++) arr[i-2] = i;
+        int[] arr = new int[n-1];
+        for (int p = 2; p <= n; p++) arr[p-2] = p;
 
-        for (int p = 2; p * p <= n; p++) {
-            if (arr[p] != 0)
-            {
-                for (int i = p * p; i <= n; i += p) arr[i] = 0;
+        for(int p = 2; p * p < n; p++){
+            if (arr[p-2] != 0){
+                for (int j = p; j * p < n; j++){
+                    arr[j*p-2] = 0;
+                }
             }
         }
 
+        ArrayList<Integer> arrL = new ArrayList<>();
+        for (int p = 2; p <= n;p++){
+            if (arr[p-2] != 0){
+                arrL.add(arr[p-2]);
+            }
+        }
         System.out.println(Arrays.toString(arr));
+        System.out.println(arrL);
     }
 }
+
+
